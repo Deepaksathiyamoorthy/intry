@@ -24,7 +24,7 @@ export const MarketLaunch = () => {
                     </div>
                     <h1>Unlock Effortless B2B Growth: How Extended Sales Enablement Teams Accelerate Revenue</h1>
                     <p className="meta">
-                        Businesses today face increasing pressure to generate predictable, qualified, and scalable revenue. In this article, we explore how IB Matrix empowers organizations to grow faster by acting as an extended sales enablement team—combining people, processes, and data to unlock consistent B2B growth.
+                        Businesses today face increasing pressure to generate predictable, qualified, and scalable revenue. In this article, we explore how Intryx empowers organizations to grow faster by acting as an extended sales enablement team—combining people, processes, and data to unlock consistent B2B growth.
                     </p>
                 </div>
 
@@ -37,7 +37,7 @@ export const MarketLaunch = () => {
                     <p>
                         Growth in B2B markets demands more than just outreach—it requires alignment across marketing, sales, operations, and data.Companies often struggle with lead quality, pipeline health, and conversion consistency.
 
-                        That’s where IB Matrix steps in.We serve as your extended growth engine, integrating directly into your teams to simplify client acquisition and optimize every stage of the revenue process.
+                        That's where Intryx steps in.We serve as your extended growth engine, integrating directly into your teams to simplify client acquisition and optimize every stage of the revenue process.
 
                         Let’s explore how this extended partnership approach is transforming B2B growth for modern organizations.
                     </p>

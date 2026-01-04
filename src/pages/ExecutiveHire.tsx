@@ -202,10 +202,10 @@ export const ExecutiveHire = () => {
                                 <p>A recent case study on how we placed a CTO for a Series B fintech in under 4 weeks.</p>
                                 <h4 className="impact-header">Impact:</h4>
                                 <ul className="stats">
-                                    <li>40% IB Matrix helped.</li>
-                                    <li>30% IB Matrix helped.</li>
-                                    <li>25% IB Matrix helped.</li>
-                                    <li>20% IB Matrix helped.</li>
+                                    <li>40% Intryx helped.</li>
+                                    <li>30% Intryx helped.</li>
+                                    <li>25% Intryx helped.</li>
+                                    <li>20% Intryx helped.</li>
                                 </ul>
                             </div>
                         </div>

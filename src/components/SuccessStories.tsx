@@ -21,29 +21,29 @@ export const SuccessStories: React.FC = () => {
                     </div>
                     <div className="story-content">
                         <div className="story-company">
-                            <span className="company-logo">IB Matrix</span>
+                            <span className="company-logo">Intryx</span>
                         </div>
                         <h3>Finding the Right Leader for a Growing Retail Brand</h3>
                         <p className="story-excerpt">
-                            "IB Matrix helped a retail startup hire a Head of Operations who aligned perfectly with their culture improving team performance and reducing operational delays by 40%."
+                            "Intryx helped a retail startup hire a Head of Operations who aligned perfectly with their culture improving team performance and reducing operational delays by 40%."
                         </p>
 
                         <div className="story-stats">
                             <div className="stat">
                                 <h4>40%</h4>
-                                <span>IB Matrix helped</span>
+                                <span>Intryx helped</span>
                             </div>
                             <div className="stat">
                                 <h4>30%</h4>
-                                <span>IB Matrix helped</span>
+                                <span>Intryx helped</span>
                             </div>
                             <div className="stat">
                                 <h4>25%</h4>
-                                <span>IB Matrix helped</span>
+                                <span>Intryx helped</span>
                             </div>
                             <div className="stat">
                                 <h4>20%</h4>
-                                <span>IB Matrix helped</span>
+                                <span>Intryx helped</span>
                             </div>
                         </div>
 
