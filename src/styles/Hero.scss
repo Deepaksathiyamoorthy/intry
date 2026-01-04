@@ -1,0 +1,251 @@
+@use 'variables' as *;
+
+.hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+
+    &-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
+        align-items: center;
+
+        @media (min-width: 960px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &-text {
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: $spacing-md;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            @media (min-width: 768px) {
+                font-size: 3.5rem;
+            }
+
+            @media (min-width: 1200px) {
+                font-size: 4rem;
+            }
+        }
+
+        p {
+            color: $color-text-muted;
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-lg;
+            max-width: 500px;
+        }
+
+        .hero-extra-visual {
+            margin-top: $spacing-xl;
+            width: 100%;
+            max-width: 450px; // Bigger size as requested ("little big")
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); // Optional fade edges
+
+            .marquee-container {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .marquee-track {
+                display: flex;
+                width: fit-content;
+                gap: $spacing-md;
+                animation: scrollContinuous 10s linear infinite; // Continuous scrolling
+            }
+
+            img {
+                height: auto;
+                max-height: 80px; // Limit height so it doesn't dominate if width is large
+                width: auto;
+                object-fit: contain;
+            }
+        }
+    }
+
+    &-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-md;
+        margin-bottom: $spacing-2xl;
+
+        .btn-video {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            color: white;
+            font-weight: 500;
+
+            .icon-play {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.8rem;
+                transition: all 0.2s;
+            }
+
+            &:hover .icon-play {
+                background: $color-primary;
+            }
+        }
+    }
+
+    &-trusted {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 3rem;
+
+        span {
+            display: block;
+            color: $color-text-muted;
+            font-size: $font-size-sm;
+            margin-bottom: $spacing-sm;
+        }
+
+        .trusted-logos {
+            display: flex;
+            gap: $spacing-lg;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.5rem;
+        }
+    }
+
+    &-visual {
+        position: relative;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        @media (min-width: 960px) {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%; // Occupy right half
+            height: 100%;
+            justify-content: flex-end;
+            z-index: 1;
+        }
+
+        .circle-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: $color-primary;
+            filter: blur(100px);
+            opacity: 0.3;
+            border-radius: 50%;
+            animation: pulse-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        .abstract-shape {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            // Using a CSS gradient circle to mimic the 3D ring for now
+            background: radial-gradient(circle at center, transparent 30%, rgba(37, 99, 235, 0.2) 31%, rgba(124, 58, 237, 0.2) 60%, transparent 70%);
+            transform: rotate(-15deg) scale(1.2);
+        }
+
+        .glass-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: $spacing-md;
+            border-radius: 12px;
+            min-width: 140px;
+
+            span {
+                display: block;
+                font-size: $font-size-sm;
+                color: $color-text-muted;
+            }
+
+            h3 {
+                font-size: $font-size-xl;
+                margin-top: $spacing-xs;
+            }
+        }
+
+        .card-1 {
+            top: 20%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            bottom: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite 2s;
+        }
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes textPopup {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes scrollContinuous {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%); // Move half the width for seamless loop
+    }
+}
+
+.highlight-text-pop {
+    display: inline-block;
+    white-space: nowrap; // Prevents text from wrapping to a new line
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textPopup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}

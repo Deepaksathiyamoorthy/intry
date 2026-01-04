@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba($color-bg-dark, 0.8);
+    backdrop-filter: blur(10px);
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    
+
+    .nav-links {
+        display: none;
+
+        @media (min-width: 960px) {
+            display: flex;
+            gap: $spacing-lg;
+
+            a {
+                font-size: $font-size-sm;
+                color: $color-text-muted;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: $color-text-white;
+                }
+            }
+        }
+    }
+}

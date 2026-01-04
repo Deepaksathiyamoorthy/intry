@@ -1,0 +1,109 @@
+@use 'variables' as *;
+
+.footer {
+    padding: $spacing-2xl 0 $spacing-lg;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: $color-bg-dark;
+    position: relative;
+    overflow: hidden;
+
+    .footer-decoration {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        max-height: 400px;
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    &-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-2xl;
+        margin-bottom: $spacing-2xl;
+
+        @media (min-width: 960px) {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+
+    .footer-brand {
+        .logo {
+            font-size: $font-size-xl;
+            font-weight: 700;
+            margin-bottom: $spacing-md;
+            color: $color-text-white;
+        }
+
+        p {
+            color: $color-text-muted;
+            margin-bottom: $spacing-lg;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: $spacing-md;
+
+            a {
+                color: $color-text-muted;
+                font-size: 1.25rem;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: $color-primary;
+                }
+            }
+        }
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-xl;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .link-column {
+            h4 {
+                color: $color-text-white;
+                margin-bottom: $spacing-lg;
+                font-size: $font-size-base;
+            }
+
+            ul {
+                li {
+                    margin-bottom: $spacing-sm;
+
+                    a {
+                        color: $color-text-muted;
+                        font-size: $font-size-sm;
+                        transition: color 0.2s;
+
+                        &:hover {
+                            color: $color-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: $spacing-lg;
+        text-align: center;
+        color: rgba($color-text-muted, 0.5);
+        font-size: $font-size-sm;
+    }
+}

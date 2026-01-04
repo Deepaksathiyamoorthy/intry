@@ -1,0 +1,116 @@
+@use 'variables' as *;
+
+.values {
+    padding: $spacing-2xl 0;
+
+    // Add fade in animation consistent with other pages
+    animation: fadeInUp 0.8s ease-out;
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto $spacing-2xl;
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba($color-primary, 0.3);
+            color: $color-primary;
+            font-size: $font-size-sm;
+            margin-bottom: $spacing-sm;
+            background: rgba($color-primary, 0.1);
+        }
+
+        .section-subtitle {
+            color: $color-text-muted;
+            font-size: $font-size-lg;
+        }
+    }
+
+    &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+            gap: $spacing-lg;
+        }
+    }
+
+    .value-card {
+        // Blue theme base
+        background: linear-gradient(145deg, rgba(17, 24, 39, 0.8) 0%, rgba(30, 58, 138, 0.2) 100%);
+        border: 1px solid rgba(59, 130, 246, 0.2); // $color-primary roughly
+        border-radius: 12px;
+        padding: $spacing-xl;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        // Subtle blue glow
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+
+            .icon-wrapper {
+                background: #3b82f6; // Blue background
+                color: white;
+                border-color: #3b82f6;
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+                transform: scale(1.1) rotate(5deg);
+            }
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: $spacing-md;
+            transition: all 0.3s;
+            color: #60a5fa; // Lighter blue icon
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        h3 {
+            font-size: $font-size-xl;
+            margin-bottom: $spacing-sm;
+            color: #fff;
+        }
+
+        p {
+            color: $color-text-muted;
+            font-size: $font-size-base;
+            line-height: 1.6;
+        }
+
+        // Remove specific .glow class logic if we want uniform blue theme, 
+        // or ensure it matches the new blue theme.
+        // The user asked for "box color blue theme", so I'll make the base card blue-themed.
+    }
+}

@@ -1,0 +1,655 @@
+@use '../index.css' as *;
+
+.executive-hire {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+
+    // Removed global fadeInPage to rely on granular ScrollReveals if needed, 
+    // or keep it for the background ONLY. 
+    // Let's keep a subtle page entrance but remove the heavy delays.
+    animation: fadeInPage 0.8s ease-out;
+
+    @keyframes fadeInPage {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    // Container rule removed to inherit global fluid layout
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 3rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 1;
+            color: #3b82f6;
+        }
+    }
+
+    .page-header {
+        margin-bottom: 4rem;
+        text-align: left;
+        // Animation handled by ScrollReveal
+
+        .sparkle-container {
+            margin-bottom: 1.5rem;
+
+            .sparkle-img {
+                width: 48px;
+                height: auto;
+                display: block;
+                filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #fff;
+            max-width: 900px;
+        }
+
+        .meta {
+            font-size: 1.1rem;
+            color: #999;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+    }
+
+    .hero-image {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 5rem;
+        position: relative;
+        padding: 3px;
+        background: transparent;
+        // Animation handled by ScrollReveal
+
+        border: none;
+
+        // Rotating Conic Gradient
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent 270deg, #3b82f6 360deg);
+            animation: spin 4s linear infinite; // Slower, smoother spin
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            border-radius: 13px;
+            background-color: #000;
+        }
+    }
+
+    .content-section {
+        margin-bottom: 6rem;
+        text-align: left;
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+    }
+
+    // New styles for the simple services list
+    .services-list-simple {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .service-simple-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: #09090b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                transform: translateX(10px) scale(1.01);
+                border-color: rgba(59, 130, 246, 0.5);
+                box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.05);
+            }
+
+            .icon {
+                font-size: 1.5rem;
+                color: #e0e0e0;
+                margin-top: 0.2rem;
+                transition: color 0.3s;
+            }
+
+            &:hover .icon {
+                color: #3b82f6;
+                text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            }
+
+            .text {
+                h3 {
+                    font-size: 1.1rem;
+                    margin-bottom: 0.5rem;
+                    color: #fff;
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+
+                &:hover h3 {
+                    // color: #60a5fa; // Optional: change text color too
+                }
+
+                p {
+                    font-size: 0.95rem;
+                    color: #888;
+                    margin: 0;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+
+    // Industries Grid
+    .industries-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .industry-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border: none;
+            background: transparent;
+            position: relative;
+            cursor: pointer; // Indicate interactivity
+
+            img {
+                width: 100%;
+                aspect-ratio: 16/10;
+                object-fit: cover;
+                border-radius: 16px;
+                border: 2px solid transparent;
+                transition: all 0.4s ease;
+                filter: brightness(0.85); // Slightly dim initially
+            }
+
+            &:hover img {
+                transform: translateY(-8px);
+                border-color: #3b82f6;
+                box-shadow: 0 15px 30px rgba(59, 130, 246, 0.25);
+                filter: brightness(1) contrast(1.1);
+            }
+
+            .overlay {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+
+                h3 {
+                    font-size: 1.25rem;
+                    margin: 0;
+                    color: #fff;
+                    font-weight: 600;
+                }
+
+                span {
+                    font-size: 0.95rem;
+                    color: #b0b0b0;
+                    font-weight: 400;
+                    transition: all 0.3s;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+            }
+
+            &:hover .overlay span {
+                color: #3b82f6;
+                transform: translateX(5px);
+                text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+            }
+        }
+    }
+
+    // Approach Grid
+    .approach-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .approach-card {
+            background: #000;
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+            transition: transform 0.3s;
+
+            // Rotating border effect base
+            &::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: conic-gradient(transparent 180deg, rgba(59, 130, 246, 0.6) 360deg);
+                animation: spin 4s linear infinite;
+                z-index: -2;
+                opacity: 0; // Hidden by default
+                transition: opacity 0.3s;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 1px;
+                background: #050505; // Slightly lighter than pure black
+                border-radius: 11px;
+                z-index: -1;
+            }
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            &:hover {
+                transform: translateY(-5px);
+                border-color: transparent;
+
+                &::before {
+                    opacity: 1;
+                }
+
+                h3 {
+                    color: #3b82f6;
+                }
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+                color: #fff;
+                transition: color 0.3s;
+            }
+
+            p {
+                font-size: 0.95rem;
+                margin: 0;
+                color: #ccc;
+            }
+        }
+    }
+
+    // Why List
+    .why-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @media (min-width: 640px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #ccc;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: translateX(5px);
+                color: #fff;
+            }
+
+            svg {
+                color: #3b82f6;
+                filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+            }
+        }
+    }
+
+    // Client Feature
+    .client-feature {
+        background: transparent;
+        border-radius: 20px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        position: relative;
+        padding: 2px;
+
+        // Always show the rotating border on this one to allow it to stand out?
+        // Or keep hover. Let's do hover + low opacity default.
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent 270deg, #3b82f6 360deg);
+            animation: spin 6s linear infinite;
+            z-index: 0;
+            opacity: 0.5; // Visible by default
+            transition: opacity 0.3s;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            animation-duration: 3s; // Speed up on hover
+        }
+
+        // Inner masking done by children since grid
+        border: none;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+
+        @media (min-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+            position: relative;
+            z-index: 1;
+            // Rounded corners on the image side need to match container minus padding
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+
+            @media (min-width: 768px) {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 18px;
+            }
+        }
+
+        .content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            background: #0b0b0f; // distinct background
+            height: 100%;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+
+            @media (min-width: 768px) {
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 18px;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+                line-height: 1.3;
+                color: #fff;
+            }
+
+            p {
+                margin-bottom: 2rem;
+                font-size: 1.05rem;
+                color: #ccc;
+            }
+
+            .impact-header {
+                font-size: 1.1rem;
+                color: #fff;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .stats {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                li {
+                    font-size: 0.95rem;
+                    color: #fff;
+                    background: rgba(59, 130, 246, 0.1);
+                    border: 1px solid rgba(59, 130, 246, 0.2);
+                    padding: 0.5rem 1rem;
+                    border-radius: 8px;
+                    width: fit-content;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        background: rgba(59, 130, 246, 0.2);
+                        transform: translateX(5px);
+                    }
+                }
+            }
+        }
+    }
+
+    // Partnering Section
+    .partnering-section {
+        margin-top: 6rem;
+        // Animation by ScrollReveal
+
+        h2 {
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .partnering-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+
+            @media (min-width: 992px) {
+                grid-template-columns: 1fr 1.2fr 1fr;
+            }
+
+            .partner-center-img {
+                border-radius: 20px;
+                overflow: hidden;
+                position: relative;
+                padding: 3px;
+                background: transparent;
+                border: none;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: conic-gradient(transparent 270deg, #3b82f6 360deg);
+                    animation: spin 5s linear infinite;
+                    z-index: 0;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    aspect-ratio: 4/5;
+                    object-fit: cover;
+                    position: relative;
+                    z-index: 1;
+                    border-radius: 17px;
+                    background: #000;
+                }
+            }
+
+            .partner-col {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                .partner-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    transition: all 0.3s;
+                    border: 1px solid transparent;
+
+                    &:hover {
+                        background: rgba(59, 130, 246, 0.05);
+                        border-color: rgba(59, 130, 246, 0.1);
+                        transform: translateY(-3px);
+                    }
+
+                    .icon {
+                        font-size: 1.5rem;
+                        color: #3b82f6;
+                        margin-bottom: 0.5rem;
+                        filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.4));
+                    }
+
+                    h3 {
+                        font-size: 1.2rem;
+                        margin: 0;
+                        color: #fff;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        font-size: 0.95rem;
+                        color: #ccc;
+                        line-height: 1.5;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .cta-section {
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        padding: 6rem 2rem;
+        text-align: center;
+        margin-top: 6rem;
+        border: none;
+        background: transparent;
+        // Animation by ScrollReveal
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent 180deg, #3b82f6 360deg);
+            animation: spin 5s linear infinite;
+            z-index: -2;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 1) 0%, rgba(30, 58, 138, 0.4) 100%);
+            border-radius: 21px;
+            z-index: -1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        p {
+            color: #e0e0e0;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            position: relative;
+            z-index: 2;
+            background: #3b82f6;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+
+            &:hover {
+                background: #2563eb;
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            }
+        }
+    }
+}
