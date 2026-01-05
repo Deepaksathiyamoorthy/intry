@@ -2,6 +2,7 @@
 
 .values {
     padding: $spacing-2xl 0;
+    scroll-margin-top: 30px;
 
     // Add fade in animation consistent with other pages
     animation: fadeInUp 0.8s ease-out;
@@ -29,8 +30,8 @@
             border-radius: 20px;
             border: 1px solid rgba($color-primary, 0.3);
             color: $color-primary;
-            font-size: $font-size-sm;
-            margin-bottom: $spacing-sm;
+            font-size: 1.3rem;
+            margin-bottom: $spacing-md;
             background: rgba($color-primary, 0.1);
         }
 

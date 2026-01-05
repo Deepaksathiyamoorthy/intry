@@ -3,6 +3,7 @@
 .solutions {
     padding: $spacing-2xl 0;
     color: $color-text-white;
+    scroll-margin-top: 30px; // Ensure title is visible under navbar when linked
 
     // Container rule removed to inherit global fluid layout
 
@@ -13,12 +14,12 @@
 
         .badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 8px 16px; // Increased padding
+            border-radius: 24px; // Increased radius
             border: 1px solid rgba($color-primary, 0.3);
             color: $color-primary;
-            font-size: $font-size-sm;
-            margin-bottom: $spacing-sm;
+            font-size: 1.3rem; // Increased font size from sm
+            margin-bottom: $spacing-md;
             background: rgba($color-primary, 0.1);
         }
 

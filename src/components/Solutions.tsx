@@ -16,7 +16,37 @@ export const Solutions: React.FC = () => {
                 </div>
 
                 <div className="solutions-grid">
-                    {/* Left Panel - Visual & High Level */}
+                    {/* Right Panel - Service List (Now visually Left) */}
+                    <div className="solution-right-panel">
+                        <div className="service-item">
+                            <div className="icon-box">
+                                <FaChartLine />
+                            </div>
+                            <h3>Go-To-Market &<br />Growth Systems</h3>
+                            <p>We help businesses design and execute end-to-end Go-To-Market strategies — from identifying the right buyer to building repeatable growth systems.</p>
+                            <Link to="/market-launch" className="learn-more-btn">Learn More</Link>
+                        </div>
+
+                        <div className="service-item">
+                            <div className="icon-box">
+                                <FaUsers />
+                            </div>
+                            <h3>Executive Staffing</h3>
+                            <p>We partner with organizations to recruit exceptional leaders who match their culture, strategy, and long-term goals.lorum ipsum.</p>
+                            <Link to="/executive-hire" className="learn-more-btn">Learn More</Link>
+                        </div>
+
+                        <div className="service-item">
+                            <div className="icon-box">
+                                <FaCalendarAlt />
+                            </div>
+                            <h3>DAAS-Driven<br />Strategic Consulting</h3>
+                            <p>We transform raw data into actionable intelligence that improves decision-making, reduces risk, and unlocks growth opportunities.</p>
+                            <Link to="/daas-consulting" className="learn-more-btn">Learn More</Link>
+                        </div>
+                    </div>
+
+                    {/* Left Panel - Visual & High Level (Now visually Right) */}
                     <div className="solution-left-panel">
                         <div className="panel-content">
                             <h2>Everything You Need to<br />Launch, Level, and Grow</h2>
@@ -64,36 +94,6 @@ export const Solutions: React.FC = () => {
 
                         {/* Background Visual */}
                         <img src={heroVisual} alt="Background Visual" className="bg-visual" />
-                    </div>
-
-                    {/* Right Panel - Service List */}
-                    <div className="solution-right-panel">
-                        <div className="service-item">
-                            <div className="icon-box">
-                                <FaChartLine />
-                            </div>
-                            <h3>Go-To-Market &<br />Growth Systems</h3>
-                            <p>We help businesses design and execute end-to-end Go-To-Market strategies — from identifying the right buyer to building repeatable growth systems.</p>
-                            <Link to="/market-launch" className="learn-more-btn">Learn More</Link>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="icon-box">
-                                <FaUsers />
-                            </div>
-                            <h3>Executive Staffing</h3>
-                            <p>We partner with organizations to recruit exceptional leaders who match their culture, strategy, and long-term goals.lorum ipsum.</p>
-                            <Link to="/executive-hire" className="learn-more-btn">Learn More</Link>
-                        </div>
-
-                        <div className="service-item">
-                            <div className="icon-box">
-                                <FaCalendarAlt />
-                            </div>
-                            <h3>DAAS-Driven<br />Strategic Consulting</h3>
-                            <p>We transform raw data into actionable intelligence that improves decision-making, reduces risk, and unlocks growth opportunities.</p>
-                            <Link to="/daas-consulting" className="learn-more-btn">Learn More</Link>
-                        </div>
                     </div>
                 </div>
             </div>

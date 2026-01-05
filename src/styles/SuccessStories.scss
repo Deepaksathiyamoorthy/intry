@@ -2,6 +2,7 @@
 
 .success-stories {
     padding: $spacing-2xl 0;
+    scroll-margin-top: 30px;
 
     .section-header {
         text-align: center;
@@ -14,8 +15,8 @@
             border-radius: 20px;
             border: 1px solid rgba($color-primary, 0.3);
             color: $color-primary;
-            font-size: $font-size-sm;
-            margin-bottom: $spacing-sm;
+            font-size: 1.3rem;
+            margin-bottom: $spacing-md;
             background: rgba($color-primary, 0.1);
         }
 
@@ -39,28 +40,21 @@
 
         .story-image {
             position: relative;
-            height: 300px;
+            height: 250px;
+            background: #000; // Remove gray by making background black
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             @media (min-width: 960px) {
                 height: auto;
-                min-height: 500px;
+                min-height: 400px;
             }
 
             img {
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            // Overlay gradient
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba($color-bg-card, 0.1));
+                height: 90%;
+                object-fit: contain; // Changed to contain to avoid clipping while being smaller
             }
         }
 
@@ -101,23 +95,49 @@
             }
 
             .story-stats {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: $spacing-md;
-                margin-bottom: $spacing-xl;
+                list-style: none;
+                padding: 0;
+                margin: 0 0 $spacing-xl 0;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 padding: $spacing-lg 0;
 
                 .stat {
+                    display: flex;
+                    align-items: center;
+                    gap: $spacing-md;
+                    padding: $spacing-sm 0;
+                    margin-bottom: $spacing-sm;
+                    opacity: 0;
+                    transform: translateX(-30px);
+                    transition: all 0.5s ease;
+                    position: relative;
+                    padding-left: 24px;
+
+                    // Bullet point
+                    &::before {
+                        content: '•';
+                        position: absolute;
+                        left: 0;
+                        color: $color-primary;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                    }
+
+                    &.visible {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+
                     h4 {
                         font-size: $font-size-xl;
                         color: $color-text-white;
-                        margin-bottom: 4px;
+                        margin: 0;
+                        min-width: 50px;
                     }
 
                     span {
-                        font-size: 0.75rem;
+                        font-size: 0.875rem;
                         color: $color-text-muted;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;

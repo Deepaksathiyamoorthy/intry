@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import successImg from '../assets/success-stories-new.jpg';
 import '../styles/SuccessStories.scss';
 
 export const SuccessStories: React.FC = () => {
+    const [visibleStats, setVisibleStats] = useState<number>(0);
+
+    // Stats data with bullet points
+    const stats = [
+        { percentage: '40%', description: 'Intryx helped' },
+        { percentage: '30%', description: 'Intryx helped' },
+        { percentage: '25%', description: 'Intryx helped' },
+        { percentage: '20%', description: 'Intryx helped' }
+    ];
+
+    useEffect(() => {
+        // Show stats one by one with a delay
+        const timer = setInterval(() => {
+            setVisibleStats(prev => {
+                if (prev < stats.length) {
+                    return prev + 1;
+                }
+                clearInterval(timer);
+                return prev;
+            });
+        }, 500); // 500ms delay between each stat
+
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <section className="success-stories" id="case-studies">
             <div className="container">
@@ -28,24 +53,18 @@ export const SuccessStories: React.FC = () => {
                             "Intryx helped a retail startup hire a Head of Operations who aligned perfectly with their culture improving team performance and reducing operational delays by 40%."
                         </p>
 
-                        <div className="story-stats">
-                            <div className="stat">
-                                <h4>40%</h4>
-                                <span>Intryx helped</span>
-                            </div>
-                            <div className="stat">
-                                <h4>30%</h4>
-                                <span>Intryx helped</span>
-                            </div>
-                            <div className="stat">
-                                <h4>25%</h4>
-                                <span>Intryx helped</span>
-                            </div>
-                            <div className="stat">
-                                <h4>20%</h4>
-                                <span>Intryx helped</span>
-                            </div>
-                        </div>
+                        <ul className="story-stats">
+                            {stats.map((stat, index) => (
+                                <li
+                                    key={index}
+                                    className={`stat ${index < visibleStats ? 'visible' : ''}`}
+                                    style={{ animationDelay: `${index * 0.5}s` }}
+                                >
+                                    <h4>{stat.percentage}</h4>
+                                    <span>{stat.description}</span>
+                                </li>
+                            ))}
+                        </ul>
 
 
                     </div>

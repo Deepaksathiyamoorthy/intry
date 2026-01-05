@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import heroVisual from '../assets/image-hero.svg';
+import heroVisual from '../assets/hero-visual.png';
+
 
 import '../styles/Hero.scss';
 import ScheduleMeetingButton from './ScheduleMeetingButton/ScheduleMeetingButton';
@@ -18,7 +19,7 @@ export const Hero: React.FC = () => {
     }, []);
 
     return (
-        <section className="hero" id="home">
+        <section className="hero" id="home" style={{ backgroundImage: `url(${heroVisual})` }}>
             <div className="container hero-content">
                 <div className="hero-text">
                     <h1>Empowering Business<br />
@@ -39,14 +40,14 @@ export const Hero: React.FC = () => {
 
 
                 </div >
+                {/* Visual hidden as it is now the background
                 <div className="hero-visual">
                     <div className="circle-glow"></div>
                     <img src={heroVisual} alt="Growth Visualization" className="hero-img" />
-                    {/* Retaining glass cards if they fit the visual, otherwise the image might contain them */}
                     <div className="abstract-shape" style={{ display: 'none' }}>
-                        {/* Hidden abstract shape since we have a real image now */}
                     </div>
                 </div>
+                */}
             </div >
         </section >
     );
