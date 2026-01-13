@@ -63,14 +63,12 @@
             margin-bottom: 1rem;
             font-weight: 700;
             color: #fff;
-            max-width: 900px;
         }
 
         .meta {
             font-size: 1.1rem;
             color: #999;
             line-height: 1.6;
-            max-width: 800px;
         }
     }
 
@@ -113,7 +111,11 @@
 
     .content-section {
         margin-bottom: 6rem;
-        text-align: left;
+        text-align: justify;
+
+        @media (max-width: 768px) {
+            text-align: left;
+        }
 
         h2 {
             font-size: 2.2rem;
@@ -175,9 +177,6 @@
                     transition: color 0.3s;
                 }
 
-                &:hover h3 {
-                    // color: #60a5fa; // Optional: change text color too
-                }
 
                 p {
                     font-size: 0.95rem;
@@ -274,32 +273,49 @@
             overflow: hidden;
             z-index: 0;
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.15); // Static border to match image
 
-            // Rotating border effect base
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .card-icon {
+                font-size: 1.5rem;
+                color: #fff;
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+                color: #fff;
+                font-weight: 600;
+            }
+
+            // Rotating border effect removed/commented out to match the cleaner static look if desired, 
+            // or we can keep it subtle. The provided code had it opacity 0. 
+            // I'll keep the cleaner look as per "exact match" 
+
             &::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: conic-gradient(transparent 180deg, rgba(59, 130, 246, 0.6) 360deg);
-                animation: spin 4s linear infinite;
-                z-index: -2;
-                opacity: 0; // Hidden by default
-                transition: opacity 0.3s;
+                display: none; // Disable fancy effect for this exact match
             }
 
             &::after {
-                content: '';
-                position: absolute;
-                inset: 1px;
-                background: #050505; // Slightly lighter than pure black
-                border-radius: 11px;
-                z-index: -1;
+                display: none; // Disable fancy effect
             }
 
-            border: 1px solid rgba(255, 255, 255, 0.1);
 
             &:hover {
                 transform: translateY(-5px);
@@ -584,71 +600,50 @@
     }
 
     .cta-section {
-        position: relative;
-        overflow: hidden;
-        border-radius: 24px;
-        padding: 6rem 2rem;
+        background: #0B1120; // Dark navy blue
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 5rem 2rem;
         text-align: center;
         margin-top: 6rem;
-        border: none;
-        background: transparent;
-        // Animation by ScrollReveal
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent 180deg, #3b82f6 360deg);
-            animation: spin 5s linear infinite;
-            z-index: -2;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            background: linear-gradient(135deg, rgba(17, 24, 39, 1) 0%, rgba(30, 58, 138, 0.4) 100%);
-            border-radius: 21px;
-            z-index: -1;
-        }
+        position: relative;
+        overflow: hidden;
 
         h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
             color: #fff;
-            position: relative;
+            line-height: 1.25;
             z-index: 2;
-            text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            position: relative;
         }
 
         p {
-            color: #e0e0e0;
+            color: #94A3B8;
             margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-            position: relative;
+            font-size: 1.35rem;
             z-index: 2;
+            position: relative;
+            line-height: 1.6;
         }
 
         .btn {
-            position: relative;
-            z-index: 2;
             background: #3b82f6;
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
             font-size: 1.1rem;
             border-radius: 8px;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            transition: all 0.2s;
+            cursor: pointer;
+            z-index: 2;
+            position: relative;
+            font-weight: 600;
+            box-shadow: none;
 
             &:hover {
                 background: #2563eb;
-                transform: scale(1.05);
-                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
             }
         }
     }

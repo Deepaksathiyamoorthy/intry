@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use "sass:color";
 
 .solutions {
     padding: $spacing-2xl 0;
@@ -14,13 +15,14 @@
 
         .badge {
             display: inline-block;
-            padding: 8px 16px; // Increased padding
-            border-radius: 24px; // Increased radius
-            border: 1px solid rgba($color-primary, 0.3);
-            color: $color-primary;
-            font-size: 1.3rem; // Increased font size from sm
+            padding: 8px 16px;
+            border-radius: 0;
+            border: 0.5px solid transparent;
+            border-image: linear-gradient(90deg, #000, #fff) 1;
+            color: #fff;
+            font-size: 1rem;
             margin-bottom: $spacing-md;
-            background: rgba($color-primary, 0.1);
+            background: transparent;
         }
 
         .section-title {
@@ -29,7 +31,7 @@
         }
 
         .section-subtitle {
-            color: $color-text-muted;
+            color: #fff;
             font-size: $font-size-lg;
         }
     }
@@ -58,6 +60,17 @@
         justify-content: space-between;
         padding: $spacing-2xl;
 
+        // Wrapper for background visual to take it out of flex flow
+        .bg-visual-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         // Background Image
         .bg-visual {
             position: absolute;
@@ -69,6 +82,14 @@
             z-index: 1;
             opacity: 0.8;
             pointer-events: none;
+        }
+
+        .panel-content-wrapper {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .panel-content {
@@ -101,7 +122,7 @@
                 border: none;
 
                 &:hover {
-                    background: darken(#3b82f6, 10%);
+                    background: color.adjust(#3b82f6, $lightness: -10%);
                 }
             }
 
@@ -202,7 +223,7 @@
             }
 
             p {
-                color: $color-text-muted;
+                color: #fff;
                 font-size: 1rem;
                 line-height: 1.6;
                 max-width: 90%;

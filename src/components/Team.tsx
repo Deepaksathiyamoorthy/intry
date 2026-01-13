@@ -1,5 +1,5 @@
 import React from 'react';
-import teamImg from '../assets/team_new.jpg';
+import teamImg from '../assets/team-update.jpg';
 import '../styles/Team.scss';
 import { ScrollReveal } from './ScrollReveal';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaCheck, FaBuilding, FaUserTie, FaHandshake, FaChartLine } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaArrowLeft, FaCheck, FaBuilding, FaUserTie, FaHandshake, FaChartLine, FaStar, FaPercentage, FaBriefcase } from 'react-icons/fa';
 import heroStaffing from '../assets/hero-staffing.png';
-import staffingIcon from '../assets/staffing-icon.png';
 import industry1 from '../assets/industry-1.png';
 import industry2 from '../assets/industry-2.png';
 import industry3 from '../assets/industry-3.png';
@@ -26,9 +26,6 @@ export const ExecutiveHire = () => {
 
                 <ScrollReveal animation="fadeInUp" delay="0.1s">
                     <div className="page-header">
-                        <div className="sparkle-container">
-                            <img src={staffingIcon} alt="Icon" className="sparkle-img" />
-                        </div>
                         <h1>Executive Staffing & Leadership Hiring</h1>
                         <p className="meta">
                             Finding the right leaders is one of the biggest challenges for any organization. In this article, we explore how Intryx helps companies hire smarter through strategic, culture-driven, and data-backed staffing models designed for long-term success.
@@ -158,18 +155,21 @@ export const ExecutiveHire = () => {
                     <div className="approach-grid">
                         <ScrollReveal animation="fadeInUp" delay="0.1s">
                             <div className="approach-card">
+                                <div className="card-icon"><FaStar /></div>
                                 <h3>Immersed in Your Culture</h3>
                                 <p>We study your values, team dynamics, and expectations to deliver perfect-fit candidates.</p>
                             </div>
                         </ScrollReveal>
                         <ScrollReveal animation="fadeInUp" delay="0.2s">
                             <div className="approach-card">
+                                <div className="card-icon"><FaPercentage /></div>
                                 <h3>Transparent & Data-Driven</h3>
                                 <p>Our process uses structured evaluations and analytics to reduce bias and improve accuracy.</p>
                             </div>
                         </ScrollReveal>
                         <ScrollReveal animation="fadeInUp" delay="0.3s">
                             <div className="approach-card">
+                                <div className="card-icon"><FaBriefcase /></div>
                                 <h3>Candidate-Centric Experience</h3>
                                 <p>We treat every candidate with respect, ensuring your employer brand remains pristine. We ensure respectful, clear, and timely communication throughout the hiring journey.</p>
                             </div>
@@ -271,11 +271,15 @@ export const ExecutiveHire = () => {
                 </ScrollReveal>
 
                 <ScrollReveal animation="fadeInUp" delay="0.2s">
-                    <div className="cta-section">
+                    <motion.div
+                        className="cta-section"
+                        animate={{ scale: [1, 1.02, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
                         <h2>Let’s Build Your Growth Story Together</h2>
                         <p>Connect with our team to explore solutions tailored to your business needs.</p>
                         <button className="btn btn-primary">Book a Call</button>
-                    </div>
+                    </motion.div>
                 </ScrollReveal>
             </div>
         </div>

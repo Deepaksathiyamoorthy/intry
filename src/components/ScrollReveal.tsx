@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 interface ScrollRevealProps {
     children: React.ReactNode;
@@ -17,49 +19,61 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     threshold = 0.1,
     className = ''
 }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const domRef = useRef<HTMLDivElement>(null);
+    // Parse duration and delay from strings like '0.8s' to numbers for framer-motion
+    const parseTime = (time: string) => parseFloat(time.replace('s', ''));
+    const durationNum = parseTime(duration);
+    const delayNum = parseTime(delay);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    // Once visible, we can stop observing if we want it to animate only once
-                    if (domRef.current) observer.unobserve(domRef.current);
+    const variants: Record<string, Variants> = {
+        fadeInUp: {
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: durationNum,
+                    delay: delayNum,
+                    ease: [0.5, 0, 0, 1]
                 }
-            });
-        }, { threshold });
-
-        const currentElement = domRef.current;
-        if (currentElement) {
-            observer.observe(currentElement);
-        }
-
-        return () => {
-            if (currentElement) {
-                observer.unobserve(currentElement);
             }
-        };
-    }, [threshold]);
-
-    const style = {
-        opacity: isVisible ? 1 : 0,
-        animation: isVisible ? `${animation} ${duration} cubic-bezier(0.5, 0, 0, 1) forwards` : 'none',
-        animationDelay: delay,
-        visibility: isVisible ? 'visible' as const : 'hidden' as const,
-        // Note: visibility hidden prevents interaction before reveal, but might cause layout flicker if not careful. 
-        // Opacity 0 is usually safer for layout but keeps it reliable.
-        // We'll stick to opacity.
+        },
+        slideInLeft: {
+            hidden: { opacity: 0, x: -30 },
+            visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                    duration: durationNum,
+                    delay: delayNum,
+                    ease: [0.5, 0, 0, 1]
+                }
+            }
+        },
+        slideInRight: {
+            hidden: { opacity: 0, x: 30 },
+            visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                    duration: durationNum,
+                    delay: delayNum,
+                    ease: [0.5, 0, 0, 1]
+                }
+            }
+        }
     };
 
+    const selectedVariant = variants[animation] || variants.fadeInUp;
+
     return (
-        <div
+        <motion.div
             className={`scroll-reveal ${className}`}
-            ref={domRef}
-            style={style}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: threshold }}
+            variants={selectedVariant}
         >
             {children}
-        </div>
+        </motion.div>
     );
 };

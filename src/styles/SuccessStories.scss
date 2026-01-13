@@ -12,16 +12,17 @@
         .badge {
             display: inline-block;
             padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba($color-primary, 0.3);
-            color: $color-primary;
-            font-size: 1.3rem;
+            border-radius: 0;
+            border: 0.5px solid transparent;
+            border-image: linear-gradient(90deg, #000, #fff) 1;
+            color: #fff;
+            font-size: 1rem;
             margin-bottom: $spacing-md;
-            background: rgba($color-primary, 0.1);
+            background: transparent;
         }
 
         .section-subtitle {
-            color: $color-text-muted;
+            color: #fff;
             font-size: $font-size-lg;
         }
     }
@@ -87,7 +88,7 @@
             }
 
             .story-excerpt {
-                color: $color-text-muted;
+                color: #fff;
                 font-size: $font-size-base;
                 font-style: italic;
                 margin-bottom: $spacing-xl;
@@ -138,7 +139,7 @@
 
                     span {
                         font-size: 0.875rem;
-                        color: $color-text-muted;
+                        color: #fff;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
                     }
